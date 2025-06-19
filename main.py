@@ -1,16 +1,46 @@
-# This is a sample Python script.
+from fastapi import FastAPI
+from tensorflow.keras.models import load_model
+from tensorflow.keras.utils import get_file
+from tensorflow.keras.utils import load_img
+from tensorflow.keras.utils import img_to_array
+from tensorflow import expand_dims
+from tensorflow.nn import softmax
+from numpy import argmax
+from numpy import max
+from numpy import array
+from json import dumps
+from uvicorn import run
+import os
 
-# Press ⌃F5 to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+app=FastAPI()
+
+model_dir=""
+model=load_model(model_dir)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press F9 to toggle the breakpoint.
+@app.post("/predict")
+async def pneumonia_prediction(image_link:str=""):
+    if image_link == "":
+        return {"message":"Please provide Image Link"}
+
+    img_path=get_file(origin=image_link)
+    img=load_img(img_path,target_size=(224,224))
+    img_array=img_to_array(img)
+    img_array=expand_dims(img_array,axis=0)
+    pred=model.predict(img_array)
+
+    score=softmax(pred[0])
+
+    class_prediction=class_predictions[argmax(score)]
+
+    model_score=round(max(score)*100,2)
+
+    return {
+        "prediction":class_prediction,
+        "scoreconfidence":model_score
+    }
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if __name__=="__main__":
+    port=int(os.environ.get("PORT",5000))
+    run(host="0.0.0.0",port=port)
