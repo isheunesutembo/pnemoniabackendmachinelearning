@@ -30,7 +30,7 @@ A machine learning-powered REST API built with FastAPI and TensorFlow for detect
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/pneumonia-detection-api.git
+git clone https://github.com/isheunesutembo/pneumonia-detection-api.git
 cd pneumonia-detection-api
 ```
 
@@ -122,7 +122,7 @@ pneumonia-detection-api/
 
 ## 🧠 Model Information
 
-- **Architecture**: Convolutional Neural Network (CNN)
+- **Architecture**: Convolutional Neural Network (CNN)(DenseNet121)
 - **Input Size**: 224x224 pixels
 - **Classes**: NORMAL, PNEUMONIA
 - **Training Data**: Chest X-ray images dataset
@@ -180,7 +180,7 @@ python test_prediction.py
 
 ## 📊 Performance
 
-- **Accuracy**: ~90% on test dataset
+- **Accuracy**: ~88% on test dataset
 - **Inference Time**: < 100ms per image
 - **Supported Formats**: JPEG, PNG, TIFF
 - **Max Image Size**: 10MB
