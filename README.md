@@ -213,9 +213,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/pneumonia-detection-api/issues)
+- **Issues**: [GitHub Issues](https://github.com/isheunesutembo/pneumonia-detection-api/issues)
 - **Documentation**: [API Docs](http://localhost:3000/docs) (when running locally)
-- **Email**: your.email@example.com
+- **Email**: isheunesu48@gmail.com
 
 ## 🙏 Acknowledgments
 
