@@ -1,4 +1,4 @@
-FROM python:3.7.3-stretch
+FROM python:3.9-slim
 
 # Maintainer info
 LABEL maintainer="isheunesutembo@gmail.com"
